@@ -25,6 +25,7 @@ function login_check(e){
 		 $("#pwd").val("").focus();
 		 return false;
 	 }else{
+	
 		e.preventDefault(); // 입력폼 미전송
 		$("#hdn_id").val($("#id").val()); // 아이디 암호화 후 히든 id에 대입
 		$("#hdn_pwd").val(rsa.encrypt($("#pwd").val())); // 비밀번호 암호화 후 히든 pw에 대입
@@ -47,6 +48,12 @@ function pwd_find(){
 	 //메서드로 새로운 공지창을 만듬.폭이 400,높이가 400인 새로운 공지창을 만듬.단위는 픽셀
 }
 
+
+function msgcheck(){
+	var msg = document.getElementById("msg").value;
+	if(msg==null||msg==""){
+	}else alert(msg);
+}
 </script>
 <style>
 
@@ -71,7 +78,8 @@ input[type=button], input[type=submit] {
 
 </style>
 </head>
-<body>
+<body onload="msgcheck()">
+<input type="hidden" id="msg" value="${msg}"/>
 <input type="hidden" id="RSAModulus" value="${modulus}"/>
 <input type="hidden" id="RSAExponent" value="${exponent}"/>   
 <jsp:include page="../top.jsp"/>
@@ -85,7 +93,7 @@ input[type=button], input[type=submit] {
 	</form>	
 </c:if> --%>
 <c:if test="${id==null && pwd==null}">
- 	<form method="post" action="login_ok1.env" onsubmit="return login_check(event);">
+ 	<form method="post" action="login_ok1.env" onSubmit="return login_check(event);">
 	<%-- 	<input type=hidden value="${inter}" name="inter" id="inter"> --%>
  		<table align="center" id="login_t">
  		<caption><h1> 로그인</h1></caption>

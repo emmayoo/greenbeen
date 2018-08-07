@@ -18,6 +18,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/img/**" location="/WEB-INF/img/" />
  	<resources mapping="/js/**" location="/WEB-INF/js/" />
+ 	<resources mapping="/font/**" location="/WEB-INF/font/" />
 		
 	<!-- ViewResolver -->
 	<beans:bean id="internalResourceViewResolver"

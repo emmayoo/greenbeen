@@ -726,6 +726,14 @@ public class Maincontrol {
 	}
 	
 	
+	@RequestMapping("/company_view.env")
+	public String company_view(String com_name,Model model){
+		List<company> com = ms.company_view(com_name);
+		model.addAttribute("com_name",com_name);
+		model.addAttribute("company",com);
+		return "company_view";
+	}
+	
 	@RequestMapping("/logincheck.env")
 	public String question_re(HttpServletRequest request){
 		HttpSession session = request.getSession();

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import env.model.RSA;
 import env.model.joinBean;
@@ -170,8 +171,9 @@ public class joincontroller {
 		}
 		/* 로그인 인증 */
 		@RequestMapping(value="login_ok.env", method = RequestMethod.POST)
-		public ModelAndView member_login_ok(String id_cookie,@RequestParam("inter") String inter,HttpServletRequest request, HttpServletResponse response, HttpSession session)
-				throws Exception {
+		public String member_login_ok(String id_cookie,@RequestParam("inter") String inter,
+									HttpServletRequest request, HttpServletResponse response, HttpSession session
+									,Model model,RedirectAttributes rttr) throws Exception {
 			//request.setCharacterEncoding("UTF-8");
 			PrintWriter out = response.getWriter();// 출력스트림 객체 생성
 			
@@ -221,39 +223,27 @@ public class joincontroller {
 			joinBean m = this.js.userCheck(id);
 
 			if (m == null) {// 등록되지 않은 회원일때
-				out.println("<script>");
-				out.println("alert('등록되지 않은 회원입니다!\n you are not our friend')");
-				out.println("history.back()");
-				out.println("</script>");
+				rttr.addFlashAttribute("msg","등록되지 않은 회원입니다!\n you are not our friend");
+				return "redirect:/loginForm.env";
 			} else {// 등록된 회원일때
 				if (m.getJoin_pwd().equals(pwd)) {// 비번이 같을때
 					session.setAttribute("id", id);
-/*
-					String join_name = m.getJoin_name();
-
-					session.setAttribute("join_name", join_name);*/
-			
 					System.out.println("login_ok.env="+inter);
-					
-					ModelAndView loginM = new ModelAndView("main");
-					// jsp폴더의 index.jsp로 이동
+					// jsp폴더의 index.jsp로 이동 (inter!)
 					if(inter.equals("inter")||inter=="inter") {
 						out.println("<script>");					
 						out.println("alert('환영합니다 \n welcome');");
 						out.println("history.go(-2);");						
 						out.println("</script>");
+						out.close();
 						return null;
 					}
-					return loginM;
+					return "main";
 				} else {// 비번이 다를때
-					out.println("<script>");
-					out.println("alert('비번이 다릅니다!\n incorrect password')");
-					out.println("history.go(-1)");
-					out.println("</script>");
+					rttr.addFlashAttribute("msg","비밀번호가 틀립니다!\n wrong password");
+					return "redirect:/loginForm.env";
 				}
 			}
-
-			return null;
 		}
 
 		/* 회원정보 수정 폼 */

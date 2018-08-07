@@ -67,7 +67,6 @@ public class MainDAO {
 	public List<company> typesublist(Map map) {
 		return sqlsession.selectList("typesublist", map);
 	}
-
 	
 	//찾기
 	public List find(String find_val) {
@@ -75,6 +74,10 @@ public class MainDAO {
 	}
 	public int cnt(String find_val) {
 		return sqlsession.selectOne("Test.cnt",find_val);
+	}
+	
+	public List<company> company_view(String com_name) {
+		return sqlsession.selectList("company_view", com_name);
 	}
 	
 }

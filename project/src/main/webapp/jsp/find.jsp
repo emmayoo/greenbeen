@@ -27,6 +27,17 @@
 				  inputText.innerHTML = innerHTML;
 		  }
 		} 
+	 function com_name(){
+		 var name = document.getElementById("com_name").innerHTML;
+		 var a =name.indexOf("<");
+		 var b =name.indexOf(">");
+		 var c =name.indexOf("<",(a+1));
+		 var d =name.indexOf(">",(b+1));
+		// alert("<="+a+"/ >="+b+"<="+c+"/ >="+d)
+		 var com_name=name.substring(0,a)+name.substring((b+1),c)+name.substring((d+1));
+		// alert(com_name);
+		location.href="company_view.env?com_name="+com_name;
+	 }
 </script>
 <style>
 	.highlight {
@@ -49,7 +60,7 @@
 	<c:if test="${not empty com_list}" >
 		<h4>회사 검색 (총 ${com_cnt}개) <c:if test="${com_cnt>10}"><input type="button" value="더보기"></c:if></h4>
 		<c:forEach var="com" items="${com_list}" begin='0' end='9'>
-			${com.com_name}<br>
+			<a onclick="com_name()" id="com_name">${com.com_name}</a><br>
 		</c:forEach>
 	</c:if>
 	
@@ -57,7 +68,7 @@
 	<c:if test="${not empty files_list}" >
 		<h4>자료실 (총 ${files_cnt}개) <c:if test="${files_cnt>10}"><input type="button" value="더보기"></c:if></h4>
 		<c:forEach var="files" items="${files_list}" begin='0' end='9'>
-			${files.subject}<br>
+			<a href="files_view.env?id=files_list&num=${files.num}">${files.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
@@ -65,7 +76,7 @@
 	<c:if test="${not empty notice_list}" >
 		<h4>공지사항 (총 ${notice_cnt}개) <c:if test="${notice_cnt>10}"><input type="button" value="더보기"></c:if></h4>
 		<c:forEach var="notice" items="${notice_list}" begin='0' end='9'>
-			${notice.subject}<br>
+			<a href="notice_view.env?id=notice_list&num=${notice.num}">${notice.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
@@ -73,7 +84,7 @@
 	<c:if test="${not empty ad_list}">
 		<h4>회사홍보 (총 ${ad_cnt}개) <c:if test="${ad_cnt>10}"><input type="button" value="더보기"></c:if></h4>
 		<c:forEach var="ad" items="${ad_list}" begin='0' end='9'>
-			${ad.subject}<br>
+			<a href="ad_com_view.env?id=ad_com_list&num=${ad.num}">${ad.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
@@ -81,7 +92,7 @@
 	<c:if test="${not empty news_list}">
 		<h4>오늘의 뉴스 (총 ${news_cnt}개) <c:if test="${news_cnt>10}"><input type="button" value="더보기"></c:if></h4>
 		<c:forEach var="news" items="${news_list}" begin='0' end='9'>
-			${news.subject}<br>
+			<a href="know_news_view.env?id=know_news_list&num=${news.num}">${news.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
@@ -90,7 +101,7 @@
 	<c:if test="${not empty q_list}">
 		<h4>질문 있어요 (총 ${q_cnt}개) <c:if test="${q_cnt>10}"><input type="button" value="더보기"></c:if></h4>
 		<c:forEach var="question" items="${q_list}" begin='0' end='9'>
-			${question.subject}<br>
+			<a href="question_view.env?id=question_list&num=${question.num}">${question.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	</div><!-- div content2 end -->
