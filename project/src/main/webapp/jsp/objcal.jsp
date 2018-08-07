@@ -1,0 +1,10 @@
+${totalDTO.com_addr2},
+
+${totalDTO.com_water},
+${totalDTO.com_energy},
+${totalDTO.com_air},
+${totalDTO.com_wp},
+${totalDTO.com_waste},
+${totalDTO.com_chemical},
+${totalDTO.com_rewater},
+${totalDTO.com_rewaste},

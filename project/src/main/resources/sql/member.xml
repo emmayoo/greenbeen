@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="login">    
+   
+    <!-- 비번 검색 -->
+    <select id="pwd_find" resultType="member" parameterType="java.util.Map">
+     select *  from env_member where join_id=#{id} and join_name=#{name}
+    </select>
+    
+    <!-- 회원저장 -->
+    <insert id="join" parameterType="member">
+     insert into env_member (join_code,join_id,join_pwd,join_name,
+     join_phone,join_email,join_regdate,join_state,position) values(member_joincode_seq.nextval,
+     #{join_id},#{join_pwd},#{join_name},
+     #{join_phone},#{join_email},sysdate,1,#{position})
+    </insert>
+    
+    <!-- 로그인 인증 -->
+    <select id="login_check" parameterType="String" resultType="member">
+     select * from env_member where join_id=#{id} and join_state=1
+    </select>
+    
+    <!-- 회원수정 -->
+    <update id="member_edit" parameterType="member">
+     update env_member set join_pwd=#{join_pwd},join_name=#{join_name},join_phone=#{join_phone},
+     join_email=#{join_email},join_deldate=sysdate 
+      where join_id=#{join_id}
+    </update>    
+    
+    <!-- 회원삭제 -->
+    <update id="member_delete" parameterType="member">
+      update env_member set join_delcont=#{join_delcont}, join_state=2,
+      join_deldate=sysdate where join_id=#{join_id}
+    </update>
+        
+    <!--아이디 찾기 -->
+    <select id="findid" parameterType="String" resultType="member">
+     select * from env_member where join_email=#{email}
+    </select>
+    
+    <!--send_mail -->
+    <select id="member_list" resultType="member">
+     select * from env_member
+    </select>
+    
+    <!--temp_pwd -->
+    <update id="temp_pwd" parameterType="Map">
+     update env_member set join_pwd=#{join_pwd} where join_id=#{join_id}
+    </update>
+    
+</mapper>
+
+
+
+
+
+
+
+
