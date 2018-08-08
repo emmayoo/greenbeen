@@ -59,15 +59,25 @@ h1 {
 	text-color: #2c3e50;
 }
 
-input[type=button], input[type=submit] {
+input[type=button], input[type=submit]{
 	background-color: #1abc9c;
 	border: none;
 	color: white;
-	padding: 12px 28px;
+	padding: 5px 12px;
+	margin:1px;
 	font-size: 12px;
 }
 
 
+@font-face{
+font-family:myFirstFont;
+src:url(font/THESusu.ttf);
+font-weight:bold;
+}
+
+h1{
+font-family:myFirstFont;
+}
 
 </style>
 </head>
@@ -88,18 +98,18 @@ input[type=button], input[type=submit] {
  	<form method="post" action="login_ok1.env" onsubmit="return login_check(event);">
 	<%-- 	<input type=hidden value="${inter}" name="inter" id="inter"> --%>
  		<table align="center" id="login_t">
- 		<caption><h1> 로그인</h1></caption>
+ 		<center><h1>로그인</h1></center>
  		<tr>
  			<td colspan=2>아이디</td>
  		</tr>
  		<tr>
- 			<td colspan=2><input type=text name="id" id="id"></td>
+ 			<td colspan=2><input type=text name="id" id="id"  placeholder="아이디를 입력하세요"></td>
  		</tr>
  		<tr>
  			<td colspan=2>비밀번호</td>
  		</tr>
  		<tr>
- 			<td colspan=2><input type=text name="pwd" id="pwd"></td>
+ 			<td colspan=2><input type=text name="pwd" id="pwd"  placeholder="비밀번호를 입력하세요"></td>
  		</tr>
  		<tr>
  			<td colspan=2><input type=checkbox name="id_cookie" id="id_cookie">아이디 저장하기</td>

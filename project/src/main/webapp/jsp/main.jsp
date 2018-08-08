@@ -44,15 +44,9 @@ $(function(){
 	이미지 변경할 때 :
 	<button id="minus">이전</button>
 	<button id="plus">이후</button>
-	<form id="a1">
-    	<ul id="second">
-     		<li><a href="part.env"><img src="img/제조업.jpg" id="mainbnt"></a></li>
-      		<li><a href="area.env"><img src="img/지역별.jpg" id="mainbnt"></a></li>
-      		<li><a href="object.env"><img src="img/object.jpg" id="mainbnt"></a></li>
-     	</ul> 
- 	</form>
+	<form id="a1"><img src="img/back.jpg" height=500px></form>
 	<form id="a2"><img src="img/back3.jpg" height=500px></form>
-	<form id="a3"><img src="img/a.jpg" height=650px"></form>
+	<form id="a3"><img src="img/back3.jpg" height=500px"></form>
 </div>
 	
 <div id="footer">
