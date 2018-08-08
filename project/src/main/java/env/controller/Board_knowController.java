@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import env.model.Board;
 import env.model.PagingPgm;
@@ -262,7 +263,7 @@ public class Board_knowController {
 	
 	//오늘의 퀴즈
 	@RequestMapping("/know_quiz_view.env")
-	public String know_quiz_view(String id,String pageNum,int num,Model model,HttpServletRequest request) throws Exception{
+	public String know_quiz_view(String id,String pageNum,int num, Model model,HttpServletRequest request) throws Exception{
 
 		//position=master인 계정만 수정&삭제 할 수 있음
 		HttpSession session = request.getSession();
@@ -277,23 +278,42 @@ public class Board_knowController {
 		model.addAttribute("position",position);
 
 		bs.selectUpdate_quiz(num);
+			
+		if(idcheck!=null) {
+		//해나
+			String qdate = bs.selectQuiz_date(idcheck);
+			System.out.println("qdate"+qdate);
+		
+		
 		Board board = bs.select_quiz(num);
 		model.addAttribute("id",id);
 		model.addAttribute("board", board);
 		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("qdate", qdate);
+		}
+		
 		return "/board/know/know_quiz_view";
 	}
 	
 	@RequestMapping("/know_quiz_solve.env")
-	public String know_quiz_solve(String id, String pageNum, int num, Model model,HttpServletRequest request) throws Exception{
+	public String know_quiz_solve(RedirectAttributes rttr,String id, String point, String pageNum, int num, Model model,HttpServletRequest request) throws Exception{
 		System.out.println("quiz solve env 들어옴");
 		
 		HttpSession session = request.getSession();
 		String loginid = (String)session.getAttribute("id");
 		//System.out.println(loginid);
+		System.out.println("point"+point);
 		
-		int result = bs.updatePoint(loginid);
-		System.out.println(result);
+		if (point.equals("1")) {
+			int result = bs.updatePoint(loginid);
+			System.out.println("result"+result);
+		}else 
+			bs.updateQdate(loginid);
+				
+		//model.addAttribute("attempt",result);
+		//rttr.addFlashAttribute("attempt",result);
+		
+		//return "redirect:/know_quiz_list.env?attempt="+result;
 		
 		return "redirect:/know_quiz_list.env";
 	}

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import env.dao.Board_knowDao;
 import env.model.Board;
+import env.model.joinBean;
 
 @Service
 public class Board_knowService{
@@ -33,6 +34,12 @@ public class Board_knowService{
 	public void selectUpdate_quiz(int num) {
 		bd.selectUpdate_quiz(num);
 	}
+	
+	//해나
+	public String selectQuiz_date(String idcheck) {
+		return bd.selectQuiz_date(idcheck);
+	}
+	
 
 	public int update_quiz(Board board) {
 		return bd.update_quiz(board);
@@ -48,6 +55,10 @@ public class Board_knowService{
 	
 	public int updatePoint(String loginid) {
 		return bd.updatePoint(loginid);
+	}
+	
+	public void updateQdate (String loginid) {
+		bd.updateQdate(loginid);
 	}
 	
 	//오늘의 뉴스

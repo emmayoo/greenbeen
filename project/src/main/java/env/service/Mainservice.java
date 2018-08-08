@@ -64,7 +64,7 @@ public class Mainservice {
 	}
 	
 	//찾기
-	public List find(String find_val) {
+	public List<company> find(String find_val) {
 		return md.find(find_val);
 	}
 	public int cnt(String find_val) {
@@ -73,4 +73,8 @@ public class Mainservice {
 	public List<company> company_view(String com_name) {
 		return md.company_view(com_name);
 	}
+	public List<company> list(company com) {
+		return md.list(com);
+	}
+	
 }

@@ -90,7 +90,7 @@
 				writer like '%'||#{find_val}||'%'	
 				 order by ref desc,re_step) 
 	</select>
-	<!-- 찾기 -->
+	<!-- 찾기 (필요없음)-->
 	<select id="cnt" parameterType="String" resultType="int">
 		select count(*) from board_question where 
 			subject like '%'||#{find_val}||'%' or

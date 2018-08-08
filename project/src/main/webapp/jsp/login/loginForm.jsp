@@ -57,11 +57,7 @@ function msgcheck(){
 </script>
 <style>
 
-body {
-	background-color: #bdc3c7
-}
-
-h1 {
+h1 {	
 	color: #2c3e50;
 	text-color: #2c3e50;
 }
@@ -75,7 +71,6 @@ input[type=button], input[type=submit] {
 }
 
 
-
 </style>
 </head>
 <body onload="msgcheck()">
@@ -83,7 +78,7 @@ input[type=button], input[type=submit] {
 <input type="hidden" id="RSAModulus" value="${modulus}"/>
 <input type="hidden" id="RSAExponent" value="${exponent}"/>   
 <jsp:include page="../top.jsp"/>
-<div class="container">
+<div class="container"  >
 <%-- <c:if test="${id!=null && pwd!=null}">
 	<form method="post" action="login_ok1.env">
 		<input type=button value="${id}" name="id" >
@@ -95,8 +90,8 @@ input[type=button], input[type=submit] {
 <c:if test="${id==null && pwd==null}">
  	<form method="post" action="login_ok1.env" onSubmit="return login_check(event);">
 	<%-- 	<input type=hidden value="${inter}" name="inter" id="inter"> --%>
- 		<table align="center" id="login_t">
- 		<caption><h1> 로그인</h1></caption>
+ 		<table align="center">
+ 		<caption><h1>login</h1></caption>
  		<tr>
  			<td colspan=2>아이디</td>
  		</tr>

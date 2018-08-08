@@ -18,7 +18,9 @@
 		<result property="attach"  	 column="attach" />
 		<result property="reg_date"	 column="reg_date" />
 		<result property="del" 		 column="del" />
+		<result property="quiz_date" 		 column="quiz_date" />
 	</resultMap>
+	
 	<!-- <select id="list" parameterType="hashMap" resultMap="boardResult"> -->
 	<select id="list_news" parameterType="board" resultMap="boardResult">
 		select * from (select a.*,rowNum rn from (
@@ -110,6 +112,11 @@
 		select * from board_know_quiz where num=#{num}
 	</select>
 	
+	<!-- 해나 -->
+ 	<select id="selectQuiz_date" parameterType="String" resultType="String">
+		select quiz_date from env_member where join_id=#{idcheck}
+	</select> 
+	
  	<select id="getMaxNum_quiz" resultType="int">
 		select nvl(max(num),0) + 1 from board_know_quiz
 	</select> 
@@ -119,24 +126,31 @@
 			select nvl(max(num),0) + 1 from board_know
 		</selectKey>   -->
 		insert into board_know_quiz values (#{num},#{writer},#{subject}, 
-			#{content},#{email},0,#{passwd},#{ip},#{attach},sysdate,sysdate,'n')
+			#{question},#{answer1},#{answer2},#{answer3},#{answer4},#{answer5},#{answer_correct},
+			#{email},0,#{passwd},#{ip},#{attach},sysdate,sysdate,'n')
 			
 	</insert>
 	
 	<update id="selectUpdate_quiz" parameterType="int">
 		update board_know_quiz set readcount = readcount+1 where num=#{num}
 	</update>
+	
 	<update id="update_quiz" parameterType="board">
 		update board_know_quiz set writer=#{writer},subject=#{subject},
-			content=#{content},email=#{email}, updatedate=sysdate  
-			,attach=#{attach} where num=#{num}
+			question=#{question},answer1=#{answer1},answer2=#{answer2},answer=#{answer3},answer4=#{answer4},answer5=#{answer5},
+			email=#{email}, updatedate=sysdate,attach=#{attach} where num=#{num}
 	</update>
+	
 	<update id="delete_quiz" parameterType="int">
 		update board_know_quiz set del='y' where num=#{num}
 	</update>
 	
 	<update id="updatePoint" parameterType="String">
-		update env_member set point=(point+10) where join_id=#{loginid}
+		update env_member set point=(point+10), quiz_date = sysdate where join_id=#{loginid}
+	</update>
+	
+	<update id="updateQdate" parameterType="String">
+		update env_member set quiz_date = sysdate where join_id=#{loginid}
 	</update>
 	
 	<!-- 찾기 -->

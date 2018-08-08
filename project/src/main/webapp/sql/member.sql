@@ -13,6 +13,11 @@ create table env_member(
   , join_deldate date /*탈퇴 날짜 */
 );
 alter table env_member add(position varchar2(50));
+
+alter table env_member add(point number(20));
+
+alter table env_member add(quiz_date date);
+
 update ENV_MEMBER set position='master';
 delete env_member where join_id='spring';
 alter table env_member modify join_pwd varchar2(1000);

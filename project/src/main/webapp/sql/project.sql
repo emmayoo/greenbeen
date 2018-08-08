@@ -16,7 +16,8 @@ create table company(
 	com_chemical number(25,10)
 )
 
-select * from company;
+select * from company where com_name like '%동양고속%';
+update company set com_name='(주)동양고속' where com_name like '%동양고속%';
 select count(*) from company;
 drop table company purge;
 
@@ -58,3 +59,6 @@ insert into ISO_code values('제주특별자치도', 'KR-49');
 insert into ISO_code values('충청남도', 'KR-44');
 insert into ISO_code values('충청북도', 'KR-43')
 
+
+select * from (select a.*,rowNum rn from (select * from company) a where com_name like '%LG%' order by com_name) 
+	where rn between 1 and 10;

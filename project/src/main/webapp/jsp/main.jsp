@@ -40,6 +40,7 @@ $(function(){
 <div id="top">
 	<jsp:include page="top.jsp"/>
 </div>
+
 <div id="content">
 	이미지 변경할 때 :
 	<button id="minus">이전</button>

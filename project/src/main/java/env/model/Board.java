@@ -40,7 +40,24 @@ public class Board {
 	// 검색
 	private String search;
 	private String keyword;
+	
+	
+	
+	//해나
+	private String quiz_date;
+	
+	public String getQuiz_date() {
+		return quiz_date;
+	}
 
+	public void setQuiz_date(String quiz_date) {
+		this.quiz_date = quiz_date;
+	}
+
+	
+	
+	
+	
 	public String getSearch() {
 		return search;
 	}

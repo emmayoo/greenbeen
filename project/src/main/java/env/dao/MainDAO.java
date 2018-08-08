@@ -69,7 +69,7 @@ public class MainDAO {
 	}
 	
 	//찾기
-	public List find(String find_val) {
+	public List<company> find(String find_val) {
 		return sqlsession.selectList("Test.find",find_val);
 	}
 	public int cnt(String find_val) {
@@ -77,7 +77,10 @@ public class MainDAO {
 	}
 	
 	public List<company> company_view(String com_name) {
-		return sqlsession.selectList("company_view", com_name);
+		return sqlsession.selectList("Test.company_view", com_name);
 	}
 	
+	public List<company> list(company com) {
+		return sqlsession.selectList("Test.company_list", com);
+	}
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import env.model.Board;
+import env.model.joinBean;
 
 @Repository
 public class Board_knowDao{
@@ -33,6 +34,11 @@ public class Board_knowDao{
 	public void selectUpdate_quiz(int num) {
 		sst.update("know.selectUpdate_quiz", num);
 	}
+	
+	//해나
+	public String selectQuiz_date(String idcheck) {
+		return sst.selectOne("know.selectQuiz_date",idcheck);
+	}
 
 	public int update_quiz(Board board) {
 		return sst.update("know.update_quiz", board);
@@ -48,6 +54,10 @@ public class Board_knowDao{
 	
 	public int updatePoint(String loginid) {
 		return sst.update("know.updatePoint", loginid);
+	}
+	
+	public void updateQdate(String loginid) {
+		sst.update("know.updateQdate", loginid);
 	}
 	
 	//오늘의 뉴스

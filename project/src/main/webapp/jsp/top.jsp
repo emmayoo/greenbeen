@@ -414,8 +414,6 @@ ul.topmenu_left li {
 				</ul>
 				
 			</div>
-
-
 			
 <!-- 			<div id="topnav">
 					<img src="img/logo.gif" id="logo">
@@ -429,5 +427,6 @@ ul.topmenu_left li {
 			<!-- /#page-content-wrapper -->
 
 		</div>
+		
 </body>
 </html>
