@@ -52,6 +52,7 @@ $(function(){
 	이미지 변경할 때 :
 	<button id="minus">이전</button>
 	<button id="plus">이후</button>
+
 	<form id="a1">
     	<ul id="second">
      		<li><a href="part.env"><img src="img/제조업.jpg" id="mainbnt"></a></li>
@@ -61,6 +62,7 @@ $(function(){
  	</form>
 	<form id="a2"><img src="img/back3.jpg" id="img1"></form>
 	<form id="a3"><img src="img/a.jpg" id="img2"></form>
+
 </div>
 	
 <div id="footer">

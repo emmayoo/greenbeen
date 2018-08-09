@@ -81,11 +81,21 @@ table.type07 thead {
     background: #FAED7D;
 }
 
+
 table.type07 thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
     color: black;
+
+input[type=button], input[type=submit]{
+	background-color: #1abc9c;
+	border: none;
+	color: white;
+	padding: 5px 12px;
+	margin:1px;
+	font-size: 12px;
+
 }
 
 table.type07 tbody th {
@@ -104,6 +114,15 @@ table.type07 td {
     border-bottom: 1px solid #ccc;
 }
 
+@font-face{
+font-family:myFirstFont;
+src:url(font/THESusu.ttf);
+font-weight:bold;
+}
+
+h1{
+font-family:myFirstFont;
+}
 
 </style>
 </head>
@@ -124,21 +143,29 @@ table.type07 td {
 	<br><br><br><br><br><br><br><br><br><br><br><br><br>
  	<form method="post" action="login_ok1.env" onsubmit="return login_check(event);" id="form">
 	<%-- 	<input type=hidden value="${inter}" name="inter" id="inter"> --%>
+
  		<table align="center" id="login_t" class="type07">   
  	  	<thead>
  	  		<th colspan=3><h1 align="center"> 로그인</h1></th>
  	  	</thead>
  	  	
  	  	<tbody>
+
+ 		<table align="center" id="login_t">
+ 		<center><h1>로그인</h1></center>
  		<tr>
  			<th>아이디</th>
- 			<td><input type=text name="id" id="id"></td>
  			<td><input type=checkbox name="id_cookie" id="id_cookie">아이디 저장하기</td>
  			
  		</tr>
  		<tr>
- 			<th>비밀번호</th>
- 			<td colspan=2><input type=text name="pwd" id="pwd"></td>
+ 			<td colspan=2><input type=text name="id" id="id"  placeholder="아이디를 입력하세요"></td>
+ 		</tr>
+ 		<tr>
+ 			<td colspan=2>비밀번호</td>
+ 		</tr>
+ 		<tr>
+ 			<td colspan=2><input type=text name="pwd" id="pwd"  placeholder="비밀번호를 입력하세요"></td>
  		</tr>
 
  		<tr>

@@ -16,7 +16,7 @@
 		}
 		
 #logo{ width :399px;
-	   height :130px;
+	   height :96px;
 	   margin-right : 40px
 	   	
 }
