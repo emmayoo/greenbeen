@@ -83,7 +83,4 @@ public class Board_adService{
 	public List find(String find_val) {
 		return bd.find(find_val);
 	}
-	public int cnt(String find_val) {
-		return bd.cnt(find_val);
-	}
 }

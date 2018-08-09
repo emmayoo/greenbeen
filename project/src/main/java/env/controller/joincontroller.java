@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import env.model.RSA;
 import env.model.joinBean;
+import env.service.Board_questionService;
 import env.service.RSAService;
 import env.service.SHAService;
 import env.service.joinservice;
@@ -36,6 +37,10 @@ public class joincontroller {
 
 	@Autowired 
 	private joinservice js;
+	
+
+	@Autowired 
+	private Board_questionService qs;
 	
 	@Autowired
 	private RSAService rsas;
@@ -584,6 +589,18 @@ public class joincontroller {
 		public String pwd_find_ok() throws Exception {
 			return "login/result2";
 			//return "login/id_find_ok";
+		}
+
+		
+		@RequestMapping(value = "/Iwrote.env")
+		public String Iwrote(String join_id,Model model){
+			
+			int no = 1;
+			List q_list = qs.writer(join_id);
+			model.addAttribute("no",no);
+			model.addAttribute("list",q_list);
+			model.addAttribute("cnt",q_list.size());
+			return "login/Iwrote";
 		}
 
 }

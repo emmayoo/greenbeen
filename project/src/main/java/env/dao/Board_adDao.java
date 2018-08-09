@@ -87,9 +87,5 @@ public class Board_adDao{
 	public List find(String find_val) {
 		return sst.selectList("ad.find", find_val);
 	}
-	//찾기
-	public int cnt(String find_val) {
-		return (int)sst.selectOne("ad.cnt", find_val);
-	}
 
 }

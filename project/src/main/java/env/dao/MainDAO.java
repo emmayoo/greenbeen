@@ -72,9 +72,6 @@ public class MainDAO {
 	public List<company> find(String find_val) {
 		return sqlsession.selectList("Test.find",find_val);
 	}
-	public int cnt(String find_val) {
-		return sqlsession.selectOne("Test.cnt",find_val);
-	}
 	
 	public List<company> company_view(String com_name) {
 		return sqlsession.selectList("Test.company_view", com_name);

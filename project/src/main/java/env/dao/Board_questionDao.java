@@ -56,8 +56,8 @@ public class Board_questionDao{
 	public List find(String find_val) {
 		return sst.selectList("question.find", find_val);
 	}
-	//찾기
-	public int cnt(String find_val) {
-		return (int)sst.selectOne("question.cnt", find_val);
+	
+	public List writer(String join_id) {
+		return sst.selectList("question.writer", join_id);
 	}
 }

@@ -56,7 +56,9 @@ public class Board_questionService{
 	public List find(String find_val) {
 		return bd.find(find_val);
 	}
-	public int cnt(String find_val) {
-		return bd.cnt(find_val);
+	
+	//찾기
+	public List writer(String join_id) {
+		return bd.writer(join_id);
 	}
 }

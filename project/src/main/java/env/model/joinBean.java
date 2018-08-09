@@ -13,6 +13,7 @@ public class joinBean {
 	private String join_delcont;
 	private String join_deldate;
 	private String position;
+	private String point;
 	
 	public String getPosition() {
 		return position;
@@ -79,6 +80,12 @@ public class joinBean {
 	}
 	public void setJoin_deldate(String join_deldate) {
 		this.join_deldate = join_deldate;
+	}
+	public String getPoint() {
+		return point;
+	}
+	public void setPoint(String point) {
+		this.point = point;
 	}
 	
 }

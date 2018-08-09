@@ -31,16 +31,23 @@ $(function(){
 })
 </script>
 <style>
-	#content{height:700px;margin-left:50%;transform: translate(-50%, 0%);}
-	ul#second {list-style-type:none;background-image:url("img/back2.jpg");height:500px;width:1200px;background-size:contain;background-repeat:no-repeat;}
+	#content{height:800px; width:77%; margin-left:50%;transform: translate(-50%, 0%); background-color: blue ; }
+	ul#second {list-style-type:none;background-image:url("img/back2.jpg");height:95%;width:100%;background-size:contain;background-repeat:no-repeat;}
 	#mainbnt{width:250px; height:auto;}
 	ul#second li{display:inline;}
+	
+	#img1 {
+		height:95%; width:100%;
+	}
+	
+	#img2 {
+		height:95%; width:100%;
+	}
 </style>
 <body>
 <div id="top">
 	<jsp:include page="top.jsp"/>
 </div>
-
 <div id="content">
 	이미지 변경할 때 :
 	<button id="minus">이전</button>
@@ -52,8 +59,8 @@ $(function(){
       		<li><a href="object.env"><img src="img/object.jpg" id="mainbnt"></a></li>
      	</ul> 
  	</form>
-	<form id="a2"><img src="img/back3.jpg" height=500px></form>
-	<form id="a3"><img src="img/a.jpg" height=650px"></form>
+	<form id="a2"><img src="img/back3.jpg" id="img1"></form>
+	<form id="a3"><img src="img/a.jpg" id="img2"></form>
 </div>
 	
 <div id="footer">

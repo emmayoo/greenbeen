@@ -225,17 +225,18 @@ public class Board_questionController {
 		}catch(Exception e) {e.printStackTrace();} //파일 안 넣으면 error 나는 데 무시하세여
 		
 		//이전에 있던 파일 없애기
-		File file = new File(path);
-		file.mkdirs();
-		
-		File[] f = file.listFiles();
-		for(int i =0; i< f.length;i++) {
-			if(f[i].getName().equals(preattach)) {
-				System.out.println("예");
-				f[i].delete();
+		try {			
+			File file = new File(path);
+			file.mkdirs();
+			
+			File[] f = file.listFiles();
+			for(int i =0; i< f.length;i++) {
+				if(f[i].getName().equals(preattach)) {
+					System.out.println("예");
+					f[i].delete();
+				}
 			}
-		}
-		
+		}catch(Exception e) {System.out.println(e.getStackTrace());}
 		int result = bs.update(board);
 		
 		model.addAttribute("id",id);

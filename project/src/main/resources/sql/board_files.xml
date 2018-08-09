@@ -88,11 +88,4 @@
 			writer like '%'||#{find_val}||'%'	
 			 order by num desc 
 	</select>
-	<!-- 찾기 -->
-	<select id="cnt" parameterType="String" resultType="int">
-		select count(*) from board_files where 
-			subject like '%'||#{find_val}||'%' or
-			content like '%'||#{find_val}||'%' or
-			writer like '%'||#{find_val}||'%'	
-	</select>
 </mapper>

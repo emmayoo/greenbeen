@@ -49,9 +49,5 @@ public class Board_noticeDao{
 	public List find(String find_val) {
 		return sst.selectList("notice.find", find_val);
 	}
-	//찾기
-	public int cnt(String find_val) {
-		return (int)sst.selectOne("notice.cnt", find_val);
-	}
 
 }

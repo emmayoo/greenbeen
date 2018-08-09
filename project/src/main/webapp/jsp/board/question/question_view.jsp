@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!--  <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 <script>
 $(function(){
 	//question_view (reply)

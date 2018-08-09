@@ -10,17 +10,28 @@
 			  index = innerHTML.indexOf(text,(index+25));
 			  inputText.innerHTML = innerHTML;
 	  }
-	} 
+	  
+	var content = document.getElementById('content2').innerHTML; 
+	alert(document.getElementById('content2').innerText);
+	content = content.replace("<pre>"," ");
+	document.getElementById('ta').value = content.length; 	  
+	document.getElementById('taa').innerHTML = content.substring(0,30); 	  
+	if(content.length>=30) document.getElementById('taa').innerHTML=document.getElementById('taa').innerHTML+"...";
+	  
+  } 
+
  </script>
  <style>
 	.highlight {
  		 background-color: yellow;
 	}
 </style>
- <body onload="highlight('안녕')">
+ <body onload="highlight('안녕aaa')">
+ <input type="text" id="ta">
+ <div  id="taa"></div>
 	<div id="content2">
 	
-설레이는 이 마음은 뭘까
+설레이는 이 마음은 뭘까 
 왠지 잠을 이룰 수가 없어
 
 혹시 꿈을 꾸고 있는지

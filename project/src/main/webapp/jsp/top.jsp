@@ -7,7 +7,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Insert title here</title>
+<title>top</title>
 
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
@@ -38,11 +38,12 @@ body, html {
 	padding-top:0;
 	overflow-y: auto;
 	overflow-x: hidden;
-	background: #e9f19a;
+	background: #E4F7BA;
 	-webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
+	
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -52,8 +53,9 @@ body, html {
 #page-content-wrapper {
 	width: 100%;
 	padding-top: 70px;
-	background-color: red;
+	background-color: white;
 	margin-top:0;
+	
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -98,39 +100,47 @@ body, html {
 #page-content-wrapper {
 	transition: margin-left .5s;
 	padding: 16px;
-	background-color: #c2f29b;
-	height: 200px;
+	background-color: white;
+	height: 170px;
 }
 
 .dropdown-container {
 	display: none;
-	background-color: #e9f19a;
+	background-color: #CEF279;  
 	padding-left: 8px;
 }
+
+/*메뉴 각각의 색 설정 */
+#summary:hover, #purpose:hover, #procedure:hover, #information:hover { background-color: yellow; }
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
 .dropdown-btn {
 	padding: 6px 8px 6px 16px;
 	text-decoration: none;
-	font-size: 18px;
-	color: #fffcfc;
+	font-size: 15px;
+	color: green;
 	display: block;
 	border: none;
-	background: none;
+	background: none; 
 	width: 100%;
 	text-align: left;
 	cursor: pointer;
 	outline: none;
+	/* background-color:pink; */
 }
 
 #logo {
-	width: 300px;
+	width: 500px; 
 	position: absolute;
-	top: 85px;
-	left:50%;  
+	top: 85px; 
+	left:50%; 
 /* 	position: relative;
 	top: 70px;
 	left:45%;  */
 	transform: translate(-50%, -50%);
+	
+	
 }
 
 #toplogo{
@@ -272,6 +282,17 @@ ul.topmenu_left li {
     .tab .nav-tabs li{ display:none; }
 }}
 
+hr {
+	border: 1;
+     width: 75%;
+     border-color : #CACACA;
+     height: 20px;
+}
+
+.caret {
+	background-color:blue;
+}
+
 </style>
 <script>
 	$(document).ready(function() {
@@ -378,18 +399,21 @@ ul.topmenu_left li {
 
 		<!-- /#sidebar-wrapper -->
 		<div id="page-content-wrapper">
-
+	
 			<!-- Page Content -->
-
+		
 			<div class="topmenu">
+				
 				<ul class="topmenu_left"><li>
+				
 					<span style="font-size: 30px; cursor: pointer"
 						data-toggle="offcanvas">&#9776;</span></li>
 				</ul>
 				
 			<!-- 	<ul class="topmenu_mid">
 					<li> -->
-					<div class="topmenu_mid"><img src="img/logo.gif" id="logo"></div>
+					<div class="topmenu_mid"><img src="img/index용.jpg" id="logo"></div>
+					
 			<!-- 		</li>
 				</ul> -->
 				
@@ -414,6 +438,8 @@ ul.topmenu_left li {
 				</ul>
 				
 			</div>
+	<hr style="margin-top:150px">
+
 			
 <!-- 			<div id="topnav">
 					<img src="img/logo.gif" id="logo">
@@ -427,6 +453,5 @@ ul.topmenu_left li {
 			<!-- /#page-content-wrapper -->
 
 		</div>
-		
 </body>
 </html>

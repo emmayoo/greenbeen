@@ -67,9 +67,6 @@ public class Mainservice {
 	public List<company> find(String find_val) {
 		return md.find(find_val);
 	}
-	public int cnt(String find_val) {
-		return md.cnt(find_val);
-	}
 	public List<company> company_view(String com_name) {
 		return md.company_view(com_name);
 	}

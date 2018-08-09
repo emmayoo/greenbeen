@@ -1,6 +1,8 @@
 package env.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,7 +67,6 @@ public class ReplyBoardController {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		rb.setReplyer(id);
-		
 		rbs.insert(rb);
 		return "redirect:question_slist.env?num="+rb.getBno();
 	}
@@ -120,55 +120,44 @@ public class ReplyBoardController {
 	public String find(company company,Board board,String pageNum,String more,String find_val,Model model){
 		
 		//회사 목록
-		TreeSet<String> ts = new TreeSet<>();
-		//TreeSet<String> ts2 = new TreeSet<>();
+
+		TreeSet<String> ts = new TreeSet<String>();
+		Map<String,String> mm = new HashMap<String,String>();		 
 		List<company> com_list = cs.find(find_val);
-		//int com_cnt=cs.cnt(find_val);
 		for(int i =0; i<com_list.size();i++) {
 			company com = com_list.get(i);
-			
 			ts.add(com.getCom_name());
-			//ts2.add(com.getCom_addr1()+" "+com.getCom_addr2()+" "+com.getCom_addr3());
+			mm.put(com.getCom_name(),com.getCom_addr1()+" "+com.getCom_addr2()+" "+com.getCom_addr3());
 		}
+
 		model.addAttribute("com_list",ts);
-//		/model.addAttribute("com_list",ts2);
+		model.addAttribute("com_addr",mm);
 		model.addAttribute("com_cnt",ts.size());
-		//model.addAttribute("com_cnt",com_cnt);
-		
+
 		List files_list = fs.find(find_val);
-		//int files_cnt=fs.cnt(find_val);
 		
 		model.addAttribute("files_list",files_list);
 		model.addAttribute("files_cnt",files_list.size());
-		//model.addAttribute("files_cnt",files_cnt);
 		
 		List notice_list = ns.find(find_val);
-		int notice_cnt=ns.cnt(find_val);
-		
+	
 		model.addAttribute("notice_list",notice_list);
 		model.addAttribute("notice_cnt",notice_list.size());
-		//model.addAttribute("notice_cnt",notice_cnt);
 		
 		List ad_list = as.find(find_val);
-		int ad_cnt=as.cnt(find_val);
-		
+	
 		model.addAttribute("ad_list",ad_list);
 		model.addAttribute("ad_cnt",ad_list.size());
-		//model.addAttribute("ad_cnt",ad_cnt);
 		
 		List know_list = ks.find(find_val);
-		int know_cnt= ks.cnt(find_val);
 		
 		model.addAttribute("know_list",know_list);
 		model.addAttribute("know_cnt",know_list.size());
-		//model.addAttribute("know_cnt",know_cnt);
 		
 		List q_list = bs.find(find_val);
-		int q_cnt=bs.cnt(find_val);
 		
 		model.addAttribute("q_list",q_list);
 		model.addAttribute("q_cnt",q_list.size());
-		//model.addAttribute("q_cnt",q_cnt);
 		
 		model.addAttribute("find_val",find_val);
 		String findpage= "/find/find";
@@ -181,15 +170,16 @@ public class ReplyBoardController {
 		if (more == null || more.equals("")) {
 			
 		}else{
+			findpage="/find/more";
 			final int rowPerPage = 10;
 			int currentp = Integer.parseInt(pageNum);
 			int total = 0;
-			if(more.equals("com")){ total=ts.size(); findpage = "/find/com_more";} 
-			if(more.equals("files")){ total=files_list.size(); findpage = "/find/more";}
-			if(more.equals("notice")) { total=notice_list.size(); findpage = "/find/more";}
-			if(more.equals("ad")) { total=ad_list.size(); findpage = "/find/more";}
-			if(more.equals("news")) { total=know_list.size(); findpage = "/find/more";}
-			if(more.equals("question")) { total=q_list.size(); findpage = "/find/more";}
+			if(more.equals("com")){ total=ts.size();} 
+			if(more.equals("files")){ total=files_list.size();}
+			if(more.equals("notice")) { total=notice_list.size();}
+			if(more.equals("ad")) { total=ad_list.size();}
+			if(more.equals("news")) { total=know_list.size();}
+			if(more.equals("question")) { total=q_list.size();}
 			int startrow = (currentp - 1)*rowPerPage +1;
 			int endrow = startrow + rowPerPage - 1;
 			PagingPgm pp= new PagingPgm(total, rowPerPage, currentp);
@@ -213,4 +203,5 @@ public class ReplyBoardController {
 		//통합검색 page
 		return findpage;
 	}
+
 }

@@ -14,8 +14,8 @@
 	<h2 class="text-primary">내 페이지</h2>
 		<table align=center>
 		    <tr>
-     			<th>수정일</th>
-     			<td>${member.join_deldate}</td>
+     			<th>*나의 씨앗*</th>
+     			<td>${member.point}</td>
    	 		</tr>
 			<tr>
      			<th>아이디</th>
@@ -38,11 +38,17 @@
      			<td>${member.join_regdate}</td>
    	 		</tr>
    	 		<tr>
+     			<th>수정일</th>
+     			<td>${member.join_deldate}</td>
+   	 		</tr>
+   	 		<tr>
      			<th>나는 </th>
      			<td>${member.position}입니다.</td>
    	 		</tr>
    	 		<tr>
    	 			<th colspan=2>
+   	 				<a href="Iwrote.env?join_id=${member.join_id}"
+					class="btn btn-danger">내가 쓴 글보기</a> 
 					<a href="member_edit.env?join_id=${member.join_id}"
 					class="btn btn-info">수정</a> 
 					<a href="member_del.env?join_id=${member.join_id}"

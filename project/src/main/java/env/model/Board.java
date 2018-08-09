@@ -41,8 +41,12 @@ public class Board {
 	private String search;
 	private String keyword;
 	
-	
-	
+	//통합검색 : content 내용 잘리기
+	private String content2;
+	public String getContent2() {
+		return content2;
+	}
+
 	//해나
 	private String quiz_date;
 	
@@ -120,6 +124,11 @@ public class Board {
 
 	public void setContent(String content) {
 		this.content = content;
+		
+		//통합검색
+		int len = content.length();
+		if(len>50) {content2 = content.substring(0, 50)+"...";}
+		this.content2 = content2;	
 	}
 
 	public String getEmail() {

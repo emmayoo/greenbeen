@@ -101,8 +101,5 @@ public class Board_knowDao{
 	public List find(String find_val) {
 		return sst.selectList("know.find", find_val);
 	}
-	//찾기
-	public int cnt(String find_val) {
-		return (int)sst.selectOne("know.cnt", find_val);
-	}
+
 }

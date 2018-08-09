@@ -49,9 +49,5 @@ public class Board_filesDao{
 	public List find(String find_val) {
 		return sst.selectList("files.find", find_val);
 	}
-	//찾기
-	public int cnt(String find_val) {
-		return (int)sst.selectOne("files.cnt", find_val);
-	}
 
 }

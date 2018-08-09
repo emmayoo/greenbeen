@@ -35,22 +35,34 @@
 		 var d =name.indexOf("b>")+1;
 		 alert("<="+a+"/ >="+b+"<="+c+"/ >="+d)
 		 var com_name=name.substring(0,a)+name.substring((b+1),c)+name.substring((d+1));
-		 alert(com_name);
+		 alert("com_name="+com_name);
 		 return com_name;
+	 }
+	 
+	 function board_view(e){
+		 var i = e.target.tagName;
+		 if(i=='A') {var name=e.target.target; var id =e.target.id;}
+		 if(i=='B') {var name=e.target.parentNode.target;var id =e.target.parentNode.id;}
+		 var num = addr('#'+name); //왜인지 모르겠는데 하나 짤리네..
+		 if(id=="files_view")
+			 	location.href="files_view.env?id=files_list&num="+num;
+		 if(id=="notice_view")
+			 	location.href="notice_view.env?id=notice_list&num="+num;
+		 if(id=="ad_com_view")
+			 	location.href="ad_com_view.env?id=ad_com_list&num="+num;
+		 if(id=="know_news_view")
+			 	location.href="know_news_view.env?id=know_news_list&num="+num;
+		 if(id=="question_view")
+			 	location.href="question_view.env?id=question_list&num="+num;
 	 }
 	 
 	 function com_name(e){
 		 var i = e.target.tagName;
 		 if(i=='A') var name=e.target.innerHTML;
 		 if(i=='B') var name=e.target.parentNode.innerHTML;
-		 alert(name);
-		 //var a =name.indexOf("<");
-		 //var b =name.indexOf(">");
-		 //var c =name.indexOf("<",(a+1));
-		 //var d =name.indexOf(">",(b+1));
-		  var com_name = addr(name);
-		  var index = com_name.indexOf("highlight");
-		  if(index>=0) com_name = addr(com_name);
+		 var com_name = addr(name);
+		 var index = com_name.indexOf("highlight");
+		 if(index>=0) com_name = addr(com_name);
 		 location.href="company_view.env?com_name="+com_name;
 	 }
 </script>
@@ -64,64 +76,83 @@
 	<jsp:include page="../top.jsp"/>
 </div>
 <div id="content" style="margin-left:30%">
+	<c:if test="${not empty list1}">
+		<b>>>[통합검색]>>회사 검색</b><br>
+	</c:if>
+	<c:if test="${not empty list2}">
+		<b>>>[통합검색]>>자료실</b><br>
+	</c:if>
+	<c:if test="${not empty list3}">
+		<b>>>[통합검색]>>공지사항</b><br>
+	</c:if>
+	<c:if test="${not empty list4}">
+		<b>>>[통합검색]>>회사홍보</b><br>
+	</c:if>
+	<c:if test="${not empty list5}">
+		<b>>>[통합검색]>>오늘의 뉴스</b><br>
+	</c:if>
+	<c:if test="${not empty list6}">
+		<b>>>[통합검색]>>질문있어요</b><br>
+	</c:if>
 
-	<b>>>[통합검색]>>회사 검색</b><br>
+
+
 	<h3 style="color:red">"${find_val}" 검색 결과...</h3>
 	<%-- <input type="text" id="find_val" value="${find_val}" >
     <input type="button" id="find" value='찾기' onclick="return find()"> --%>
 	<br>
 	<div id="content2">
 	<table class="table table-striped">
-	<tr>
-		<td>회사 이름</td>
-		<td>주소</td>
 	<!--회사검색 -->
-	<c:if test="${not empty com_list}" >
+	<c:if test="${not empty list1}" >
 		<h4>회사 검색 (총 ${com_cnt}개) </h4>
+		<tr>
+			<td>회사 이름</td>
+		</tr>
 		<c:forEach var="com" items="${list1}">
-			<a onclick="com_name(event)" href="#">${com.com_name}</a><br>
+			<tr><td><a onclick="com_name(event)" href="#" id="com">${com.com_name}</a><br></td></tr>
 		</c:forEach>
 	</c:if>
 
 	
 	<!--자료실 -->
-	<c:if test="${not empty files_list}" >
+	<c:if test="${not empty list2}" >
 		<h4>자료실 (총 ${files_cnt}개)</h4>
 		<c:forEach var="files" items="${list2}">
-			<a href="files_view.env?id=files_list&num=${files.num}">${files.subject}</a><br>
+			<a onclick="board_view(event)" target="${files.num}" id="files_view">${files.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
 	<!--공지사항 -->
-	<c:if test="${not empty notice_list}" >
+	<c:if test="${not empty list3}" >
 		<h4>공지사항 (총 ${notice_cnt}개)</h4>
 		<c:forEach var="notice" items="${list3}" >
-			<a href="notice_view.env?id=notice_list&num=${notice.num}">${notice.subject}</a><br>
+			<a onclick="board_view(event)" target="${notice.num}" id="notice_view">${notice.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
 	<!--회사 홍보 -->
-	<c:if test="${not empty ad_list}">
+	<c:if test="${not empty list4}">
 		<h4>회사홍보 (총 ${ad_cnt}개)</h4>
 		<c:forEach var="ad" items="${list4}">
-			<a href="ad_com_view.env?id=ad_com_list&num=${ad.num}">${ad.subject}</a><br>
+			<a onclick="board_view(event)" target="${ad.num}" id="ad_com_view">${ad.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
 	<!--오늘의 뉴스 -->
-	<c:if test="${not empty news_list}">
+	<c:if test="${not empty list5}">
 		<h4>오늘의 뉴스 (총 ${news_cnt}개)</h4>
 		<c:forEach var="news" items="${list5}">
-			<a href="know_news_view.env?id=know_news_list&num=${news.num}">${news.subject}</a><br>
+			<a onclick="board_view(event)" target="${news.num}" id="know_news_view">${news.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	
 		
 	<!--질문있어요 -->
-	<c:if test="${not empty q_list}">
+	<c:if test="${not empty list6}">
 		<h4>질문 있어요 (총 ${q_cnt}개)</h4>
 		<c:forEach var="question" items="${list6}">
-			<a href="question_view.env?id=question_list&num=${question.num}">${question.subject}</a><br>
+			<a onclick="board_view(event)" target="${question.num}" id="question_view">${question.subject}</a><br>
 		</c:forEach>
 	</c:if>
 	</table>
