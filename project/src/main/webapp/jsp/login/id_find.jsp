@@ -107,15 +107,62 @@ function domain_list() {
 	}
  }
 </script>
+
+<style>
+.input_button ,.input_button1 {
+  
+  width: 22%;
+  height: 50%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px; 
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: auto;
+  
+  }
+
+.input_button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: black;
+  transform: translateY(-7px);
+}
+
+.input_button1:hover {
+  background-color: #CEFBC9;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: black;
+  transform: translateY(-7px);
+}
+
+
+#last{
+  margin : 0 auto ;
+   width: 100%;
+   text-align: center;
+   
+}
+
+</style>
 </head>
 <body>
  <div id="id_wrap">
  
  <c:if test="${empty pwdok}"> 
-  <h2 class="id_title">아이디찾기</h2>
   <form method="post" onsubmit="return check()" action="id_find_ok.env" name="f" id="f">  
    <input type=hidden id="text" name="findid">
-   <table id="id_t">
+   <table id="id_t" border=1>
+   <tr><td colspan=2><h2 class="id_title" align="center">아이디찾기</h2></td></tr>
     <tr>
      <th>회원이름</th>
      <td><input name="join_name" id="name" size="14" class="input_box" /></td>
@@ -157,7 +204,8 @@ function domain_list() {
      		</td>
     </tr> --%>
     
-   </table>
+ <tr><td colspan=2>
+ <div id="last">
    <div id="id_menu">
     <input type="submit" value="찾기" class="input_button" />
     <input type="reset" value="취소" class="input_button" 
@@ -168,6 +216,9 @@ function domain_list() {
     onclick="self.close();" />
     <!-- close()메서드로 공지창을 닫는다. self.close()는 자바스크립트이다. -->
    </div>
+   </div>
+   </td></tr>
+   </table>
   </form>
   </c:if>
   

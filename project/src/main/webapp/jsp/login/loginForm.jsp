@@ -51,51 +51,37 @@ function pwd_find(){
 <style>
 
 body .container{ 
-	background-image:url('img/배경.PNG');
+	/* background-image:url('img/배경.PNG'); */
 	background-repeat:no-repeat ;   
 	background-size : 100% 100%;  
-	background-color:red;
-
+	background-color: white;
 } 
 
 /* 테이블 라인 */
 table.type07 {
-	width : 60%;
+	width : 50%;
 	height : 50%;
 	
     border-collapse: collapse;
     text-align: left;
 
     margin: 20px auto;
-    border: 1px solid #000000;
-    -webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-  	border-radius: 4px;	  
+ 
 }
 
 
 table.type07 thead {
 
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    background: #FAED7D;
+/*     border-right: 1px solid #000000; 
+    border-left: 1px solid #000000;  */
+/*     background: #FAED7D; */
 }
-
 
 table.type07 thead th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    color: black;
-
-input[type=button], input[type=submit]{
-	background-color: #1abc9c;
-	border: none;
-	color: white;
-	padding: 5px 12px;
-	margin:1px;
-	font-size: 12px;
-
+  /*    color: black; */ 
 }
 
 table.type07 tbody th {
@@ -103,27 +89,63 @@ table.type07 tbody th {
     padding: 10px;
     font-weight: bold;
     vertical-align: top;
-    border-bottom: 1px solid #ccc; 
-    background: #E4F7BA;
+    font-size : 18px;
+    text-align: center;
+    margin: 0 auto;
+     
+    /*  border-bottom: 1px solid #000000;  */
+    /* background: #E4F7BA; */
 }
 
 table.type07 td {
     width: 350px;
     padding: 10px;
-    vertical-align: top;
-    border-bottom: 1px solid #ccc;
+    vertical-align: top; 
+   /*  border-bottom: 1px solid #ccc; */
 }
 
-@font-face{
-font-family:myFirstFont;
-src:url(font/THESusu.ttf);
-font-weight:bold;
+.input_button ,.input_button1 {
+  
+  width: 22%;
+  height: 50%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px; 
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: auto;
+  
+  }
+
+.input_button:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: black;
+  transform: translateY(-7px);
 }
 
-h1{
-font-family:myFirstFont;
+.input_button1:hover {
+  background-color: #CEFBC9;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: black;
+  transform: translateY(-7px);
 }
 
+#last{
+  margin : 0 auto ;
+   width: 100%;
+   text-align: center;
+}
+ 
 </style>
 </head>
 <body>
@@ -140,52 +162,46 @@ font-family:myFirstFont;
 	</form>	
 </c:if> --%>
 <c:if test="${id==null && pwd==null}">
-	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br> 
+	
  	<form method="post" action="login_ok1.env" onsubmit="return login_check(event);" id="form">
 	<%-- 	<input type=hidden value="${inter}" name="inter" id="inter"> --%>
-
- 		<table align="center" id="login_t" class="type07">   
- 	  	<thead>
- 	  		<th colspan=3><h1 align="center"> 로그인</h1></th>
+ 		<table align="center" id="login_t" class="type07" border=1>   
+ 	  	<thead><tr>
+ 	  		<th colspan=3><h1 align="center"> 로그인</h1></th></tr>
  	  	</thead>
  	  	
  	  	<tbody>
-
- 		<table align="center" id="login_t">
- 		<center><h1>로그인</h1></center>
  		<tr>
  			<th>아이디</th>
- 			<td><input type=checkbox name="id_cookie" id="id_cookie">아이디 저장하기</td>
- 			
+ 			<td colspan=2><input type=text name="id" id="id">
+ 			&nbsp;&nbsp;
+ 			<input type=checkbox name="id_cookie" id="id_cookie">아이디 저장하기
+ 			</td>
  		</tr>
  		<tr>
- 			<td colspan=2><input type=text name="id" id="id"  placeholder="아이디를 입력하세요"></td>
- 		</tr>
- 		<tr>
- 			<td colspan=2>비밀번호</td>
- 		</tr>
- 		<tr>
- 			<td colspan=2><input type=text name="pwd" id="pwd"  placeholder="비밀번호를 입력하세요"></td>
+ 			<th>비밀번호</th>
+ 			<td colspan=2><input type=text name="pwd" id="pwd"></td>
  		</tr>
 
  		<tr>
  		<td colspan=3>
+ 		<br><br>
+ 		<div id='last'>
  			<input type="submit" value="로그인" class="input_button"/>
  			<input type="button" value="회원가입" class="input_button" onclick="location.href='join.env'"/>
+ 			<input type="button" value="아이디찾기" class="input_button1" onclick="id_find()"/>
+ 			<input type="button" value="비밀번호찾기" class="input_button1" onclick="pwd_find()"/>
+ 		</div>
  		</td>
  		</tr>
- 		
- 		<tr>
- 		<td colspan=3>
- 			<input type="button" value="아이디찾기" class="input_button" onclick="id_find()"/>
- 			<input type="button" value="비밀번호찾기" class="input_button" onclick="pwd_find()"/>
- 		</td>
- 		</tr>
+
  		</tbody>
  	</table>
 </fieldset>
  	</form>
  	<br><br><br>
+ 	
  </c:if>
  	<%-- 서버에 실제 전송되는 폼 --%>
 	<form id="hiddenForm" action="login_ok.env" method="post">

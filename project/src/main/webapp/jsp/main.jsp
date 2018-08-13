@@ -27,11 +27,11 @@ $(function(){
 		if(i==4){i=1;}
 		$('form:not(#a'+i+')').hide();
 
-	},2000); 
+	},2000);  
 })
 </script>
 <style>
-	#content{height:800px; width:77%; margin-left:50%;transform: translate(-50%, 0%); background-color: blue ; }
+	#content{height:800px; width:77%; margin-left:50%;transform: translate(-50%, 0%); background-color: blue;}
 	ul#second {list-style-type:none;background-image:url("img/back2.jpg");height:95%;width:100%;background-size:contain;background-repeat:no-repeat;}
 	#mainbnt{width:250px; height:auto;}
 	ul#second li{display:inline;}
@@ -43,6 +43,31 @@ $(function(){
 	#img2 {
 		height:95%; width:100%;
 	}
+	
+	/* Fading animation */
+/* 	 .fade2 {
+  	-webkit-animation-name: slide;
+  	-webkit-animation-duration: 0.5s;
+  	animation-name: slide;
+ 	animation-duration: 5s;
+
+	}
+
+	@-webkit-keyframes slide {
+  	from {opacity: .4}
+  	to {opacity: 1}
+	}
+
+	@keyframes slide {
+  	from {opacity: .4}
+  	to {opacity: 1}	
+	} */  
+	.slide {
+	overflow:hidden;
+	transition:transform 0.5s ease-out;
+	transform:translateZ(0);
+	}
+
 </style>
 <body>
 <div id="top">
@@ -53,15 +78,16 @@ $(function(){
 	<button id="minus">이전</button>
 	<button id="plus">이후</button>
 
-	<form id="a1">
+	<form id="a1"  class="slide"><img src="img/ji.jpg" id="img1"></form>
+	<form id="a2" class="slide">
     	<ul id="second">
      		<li><a href="part.env"><img src="img/제조업.jpg" id="mainbnt"></a></li>
       		<li><a href="area.env"><img src="img/지역별.jpg" id="mainbnt"></a></li>
       		<li><a href="object.env"><img src="img/object.jpg" id="mainbnt"></a></li>
      	</ul> 
  	</form>
-	<form id="a2"><img src="img/back3.jpg" id="img1"></form>
-	<form id="a3"><img src="img/a.jpg" id="img2"></form>
+	<form id="a3"  class="slide"><img src="img/a.jpg" id="img2"></form>
+<!-- 	<form id="a4"  class="fade2"><img src="img/ji.jpg" id="img3"></form> -->
 
 </div>
 	
