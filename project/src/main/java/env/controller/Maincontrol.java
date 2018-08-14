@@ -743,4 +743,11 @@ public class Maincontrol {
 		return null;
 	}
 	
+	@RequestMapping("/contest.env")
+	public String contest(){
+		
+		return "contest";
+	
+	}
+	
 }

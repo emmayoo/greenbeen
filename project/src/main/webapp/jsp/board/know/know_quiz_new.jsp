@@ -25,57 +25,57 @@
 
 <div class="container"> 
 
-		<h2 class="text-primary">오늘의 퀴즈</h2>
 		<form name="frm" action="know_quiz_insert.env" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="${id}"> 
 			<input type="hidden" name="num" value="${num}"> 
 			<input type="hidden" name="pageNum" value="${pageNum}">
-			<table class="table table-striped" align="center">
+			<table class="table table-striped" align="center" style="width:75%;">
+				<tr><td colspan=4><center class="text-primary">오늘의 퀴즈</center></td></tr>
 				<tr>
-					<td>제목</td>
-					<td><input type="text" name="subject" required="required"></td>
+					<td style="width:15%; text-align:center">제목</td>
+					<td colspan=3><input type="text" name="subject" required="required" style="width:100%;"></td>
 				</tr>
 				<tr>
-					<td>작성자</td>
-					<td><input type="text" name="writer" required="required"></td>
+					<td style="width:15%; text-align:center">작성자</td>
+					<td colspan=3><input type="text" name="writer" required="required"></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="email" required="required"></td>
+					<td style="width:15%; text-align:center">이메일</td>
+					<td colspan=3><input type="email" name="email" required="required"></td>
 				</tr>
 				<tr>
-					<td>암호</td>
-					<td><input type="password" name="passwd" required="required"></td>
+					<td style="width:15%; text-align:center">암호</td>
+					<td colspan=3><input type="password" name="passwd" required="required"></td>
 				</tr>
 				<tr>
-					<td>암호 확인</td>
-					<td><input type="password" name="passwd2"  required="required"></td>
+					<td style="width:15%; text-align:center">암호 확인</td>
+					<td colspan=3><input type="password" name="passwd2"  required="required"></td>
 				</tr>
 				<tr>
-					<td>문제</td>
-					<td><textarea rows="5" cols="30" name="question" required="required"></textarea></td>
+					<td style="width:15%; text-align:center">문제</td>
+					<td colspan=3><textarea rows="5" cols="100" name="question" required="required"></textarea></td>
 				</tr>
 				<tr>
-					<td>보기1</td>
-					<td>1번<input type="text" name="answer1" required="required"></td>
-					<td>2번<input type="text" name="answer2" required="required"></td>
-					<td>3번<input type="text" name="answer3" required="required"></td>
+					<td style="width:15%; text-align:center">보기1</td>
+					<td>1번 <input type="text" name="answer1" required="required"></td>
+					<td>2번 <input type="text" name="answer2" required="required"></td>
+					<td>3번 <input type="text" name="answer3" required="required"></td>
 				</tr>
 				<tr>
-					<td>보기2</td>
-					<td>4번<input type="text" name="answer4" required="required"></td>
-					<td>5번<input type="text" name="answer5" required="required"></td>			
+					<td style="width:15%; text-align:center">보기2</td>
+					<td>4번 <input type="text" name="answer4" required="required"></td>
+					<td>5번 <input type="text" name="answer5" required="required"></td>			
 				</tr>
 				<tr>
-					<td>정답</td>
-					<td>정답<input type="text" name="answer_correct" required="required"></td>
+					<td style="width:15%; text-align:center">정답</td>
+					<td colspan=3><input type="text" name="answer_correct" required="required"></td>
 				</tr>
 				<tr>
-					<td>파일첨부</td>
-					<td><input type="file" name="attach1"></td> <!-- multipart로 받을 꺼니까 DTO랑 property명 다르게 하기!!! -->
+					<td style="width:15%; text-align:center">파일첨부</td>
+					<td colspan=3><input type="file" name="attach1"></td> <!-- multipart로 받을 꺼니까 DTO랑 property명 다르게 하기!!! -->
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"></td>
+					<td colspan="4" align="center"><input type="submit" value="확인" class="btn btn-outline-info"></td>
 				</tr>
 			</table>
 		</form>

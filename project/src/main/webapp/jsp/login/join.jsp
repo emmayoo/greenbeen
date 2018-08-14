@@ -137,16 +137,18 @@ table.type07 td {
      		<th>아이디</th>
      		<td><input name="join_id" id="join_id" size="14" class="input_box" />
      			&nbsp;&nbsp;&nbsp;
-      			<input type="button" value="아이디 중복체크" class="input_button1" onclick="id_check()" />
+      			<input type="button" value="아이디 중복체크" style="width:30%;height:30%;color:black;background-color:green;border-radius:10px" class="input_button1" onclick="id_check()" />
       			<div id="idcheck"></div></td>
    	 	</tr>
     	<tr>
      		<th>비밀번호</th>
-     		<td><input type="password" name="join_pwd1" id="join_pwd1" size="14" class="input_box" /></td>
+     		<td><input type="password" name="join_pwd1" id="join_pwd1" size="14" class="input_box" onkeyup="pwd1()" />
+     		<span id="pwdcheck"></span></td>
     	</tr>
     	<tr>
      		<th>비밀번호 확인</th>
-     		<td><input type="password" name="join_pwd2" id="join_pwd2" size="14"class="input_box" /></td>
+     		<td><input type="password" name="join_pwd2" id="join_pwd2" size="14"class="input_box" onkeyup="pwd2()"/>
+     		<span id="pwdcheck2"></span></td>
     	</tr>
     	<tr>
 			<th>이름</th>
@@ -188,8 +190,8 @@ table.type07 td {
     <td colspan=2>
     <br><br>
 	   <div id="join_menu">
-   	   <input type="submit" value="회원가입" class="input_button" />
-       <input type="reset" value="가입취소" class="input_button" onclick="$('#join_id').focus();" />
+   	   <input type="submit" value="회원가입" style="width:30%;height:30%;color:black;background-color:skyblue;border-radius:10px" class="input_button" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <input type="reset" value="가입취소" style="width:30%;height:30%;color:black;background-color:red;border-radius:10px" class="input_button" onclick="$('#join_id').focus();" />
       </div>
     </td>
     </tr>

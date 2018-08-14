@@ -25,19 +25,19 @@
 
 <div class="container"> 
 
-		<h2 class="text-primary">게시글 삭제 ${pageNum}</h2>
 		<form action="question_delete.env?id=${id}&num=${board.num}&pageNum=${pageNum}" name="frm" onsubmit="return chk()" method="post">
 			<%-- <input type="hidden" name="pageNum" value="${pageNum}">  이거 있으니까 pageNum이 '1,1'로 나온다--%>
 			<input type="hidden" name="passwd" value="${board.passwd}"> 
 			<%-- <input type="hidden" name="preattach" value="${board.attach}"> delete가 진찌 delete가 아니라 del='y'로 바꾼거라 안필요할듯--%>
 			<input type="hidden" name="num" value="${board.num}">
-			<table class="table">
+			<table class="table table-striped" align="center" style="width:75%;">
+				<tr><td colspan=2><center class="text-primary">게시글 삭제</center></td></tr>
 				<tr>
-					<td>암호</td>
+					<td style="width:15%; text-align:center">암호</td>
 					<td><input type="password" name="passwd2" required="required"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="확인"></td>
+					<td colspan="2" align="center"><input type="submit" value="확인" class="btn btn-outline-info"></td>
 				</tr>
 			</table>
 		</form>

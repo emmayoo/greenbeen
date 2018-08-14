@@ -7,10 +7,10 @@
 <title>footer</title>
 <script>
 	function find(){
-		var a = document.getElementById("find_val2").value;
+		var a = document.getElementById("find_val").value;
 	    alert(a);
 		if(a==""||a==null){ 
-			alert("검색어를 입력하세요.");	
+			alert("찾을 값을 입력하세요.");	
 			return false;
 		}
 		location.href="find.env?find_val="+a; //replyBoardcontroller에 있음
@@ -30,10 +30,11 @@
 	}
 	
 	hr {
-		border: 1;
+		border: 2;
  	    width: 75%;
  	    border-color : #CACACA;
  	    height: 20px;
+ 	    position: absoulte;
 	}
 
 

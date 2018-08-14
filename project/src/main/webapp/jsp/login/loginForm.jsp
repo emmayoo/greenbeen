@@ -50,21 +50,19 @@ function pwd_find(){
 </script>
 <style>
 
-body .container{ 
-	/* background-image:url('img/배경.PNG'); */
+#content{ 
+	background-image:url(img/loginback2.jpg);
 	background-repeat:no-repeat ;   
-	background-size : 100% 100%;  
+	background-size : cover;  
 	background-color: white;
+	height:900px
 } 
 
 /* 테이블 라인 */
 table.type07 {
-	width : 50%;
-	height : 50%;
 	
     border-collapse: collapse;
     text-align: left;
-
     margin: 20px auto;
  
 }
@@ -98,7 +96,7 @@ table.type07 tbody th {
 }
 
 table.type07 td {
-    width: 350px;
+    width: 20%;
     padding: 10px;
     vertical-align: top; 
    /*  border-bottom: 1px solid #ccc; */
@@ -140,19 +138,20 @@ table.type07 td {
   transform: translateY(-7px);
 }
 
-#last{
+#login_t{
   margin : 0 auto ;
    width: 100%;
    text-align: center;
 }
- 
+#id,#pwd{width:40%;}
+
 </style>
 </head>
 <body>
 <input type="hidden" id="RSAModulus" value="${modulus}"/>
 <input type="hidden" id="RSAExponent" value="${exponent}"/>   
 <jsp:include page="../top.jsp"/>
-<div class="container">
+<div id="content">
 <%-- <c:if test="${id!=null && pwd!=null}">
 	<form method="post" action="login_ok1.env">
 		<input type=button value="${id}" name="id" >
@@ -166,38 +165,35 @@ table.type07 td {
 	
  	<form method="post" action="login_ok1.env" onsubmit="return login_check(event);" id="form">
 	<%-- 	<input type=hidden value="${inter}" name="inter" id="inter"> --%>
- 		<table align="center" id="login_t" class="type07" border=1>   
+		<table height=80% width=80% align=center><tr>
+		<td width=65%>
+			<h1><font color="white">환경정보 공개제도에<br><br>
+			오신 것을 환영합니다!</font></h1>
+		</td>
+		<td width=35%>
+ 		<table align="center" id="login_t" class="type07" border=1 width=100% height=auto style="background-color:white">   
  	  	<thead><tr>
- 	  		<th colspan=3><h1 align="center"> 로그인</h1></th></tr>
+ 	  		<th><h1 align="center">LOGIN</h1></th></tr>
  	  	</thead>
- 	  	
  	  	<tbody>
- 		<tr>
- 			<th>아이디</th>
- 			<td colspan=2><input type=text name="id" id="id">
- 			&nbsp;&nbsp;
- 			<input type=checkbox name="id_cookie" id="id_cookie">아이디 저장하기
- 			</td>
- 		</tr>
- 		<tr>
- 			<th>비밀번호</th>
- 			<td colspan=2><input type=text name="pwd" id="pwd"></td>
- 		</tr>
-
- 		<tr>
- 		<td colspan=3>
- 		<br><br>
- 		<div id='last'>
- 			<input type="submit" value="로그인" class="input_button"/>
- 			<input type="button" value="회원가입" class="input_button" onclick="location.href='join.env'"/>
+ 		<tr><td>
+ 			<br><input type=text name="id" id="id" placeholder="아이디/id">
+ 			<br><br>
+ 			<input type=text name="pwd" id="pwd" placeholder="비밀번호/password"><br>
+ 			<br><br>
+ 			<input type=checkbox name="id_cookie" id="id_cookie" >	자동 로그인 <input type="hidden" name="id_cookie" id="id_cookie" ><font color="white">로그인로그인인</font><br><br>
+ 			<input type="submit" value="로그인" style="width:40%;height:30%;color:black;background-color:red;border-radius:10px" class="input_button"/><br><br>
  			<input type="button" value="아이디찾기" class="input_button1" onclick="id_find()"/>
  			<input type="button" value="비밀번호찾기" class="input_button1" onclick="pwd_find()"/>
- 		</div>
- 		</td>
+ 			<br>	<br>	<br>
+ 			<font color="blue">아직 저희 회원이 아니신가요??</font><br>
+ 			<input type="button" value="회원가입" style="width:40%;height:30%;color:black;background-color:skyblue;border-radius:10px" class="input_button" onclick="location.href='join.env'"/>
+ 			<br><br><br></td>
  		</tr>
 
  		</tbody>
  	</table>
+ 	</td></tr></table>
 </fieldset>
  	</form>
  	<br><br><br>

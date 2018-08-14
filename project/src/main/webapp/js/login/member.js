@@ -1,4 +1,46 @@
-﻿function master(){
+﻿function pwd2(){
+	$("#pwdcheck").hide();//idcheck span 아이디 영역을 숨긴다.
+	//1.입력글자 길이 체크
+	if($.trim($("#join_pwd1").val())!=$.trim($("#join_pwd2").val())){
+		newtext='<font color="red">일치하지 않습니다</font>';
+		$("#pwdcheck2").text('');
+		$("#pwdcheck2").show();
+		$("#pwdcheck2").append(newtext);//span 아이디 영역에 경고문자 추가
+	}else{
+		newtext='<font color="green">일치합니다</font>';
+		$("#pwdcheck2").html('');
+		$("#pwdcheck2").show();
+		$("#pwdcheck2").append(newtext);//span 아이디 영역에 경고문자 추가
+	};
+}
+function pwd1(){
+	$("#pwdcheck").hide();//idcheck span 아이디 영역을 숨긴다.
+	var pattern= /^.*(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*\(\)+=\-_|\{\}\[\]:;\'\"<>,.\/?])(?=.*[0-9]).{8,20}/g;
+	var newtext='';
+	//1.입력글자 길이 체크
+	if($.trim($("#join_pwd1").val()).length < 8){
+		newtext='<font color="red">비밀번호는 8자 이상이어야 합니다.</font>';
+		$("#pwdcheck").text('');
+		$("#pwdcheck").show();
+		$("#pwdcheck").append(newtext);//span 아이디 영역에 경고문자 추가
+	};
+	if($.trim($("#join_pwd1").val()).length >= 8 & $.trim($("#join_pwd1").val()).length >= 12){
+		$("#pwdcheck").hide();
+	};
+	if($.trim($("#join_pwd1").val()).length >12){
+		newtext='<font color="red">아이디는 12자 이하이어야 합니다.</font>';
+		$("#pwdcheck").html('');
+		$("#pwdcheck").show();
+		$("#pwdcheck").append(newtext);
+	};
+	if(! $("#join_pwd1").val().test(pattern)){
+		newtext='<font color="red">비밀번호는 영문,숫자,특수문자를 포함해야합니다.</font>';
+		$("#pwdcheck").text('');
+		$("#pwdcheck").show();
+		$("#pwdcheck").append(newtext);
+	};
+}
+function master(){
 	$("#mastercheck").val("").focus();
 	$("#master").removeAttr("style");
 	alert("비밀번호를 입력하세요.\n(모르면 연주한테 물어 보기~oracle계정 비번)");

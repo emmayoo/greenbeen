@@ -26,33 +26,30 @@
 <div class="container"> 
 
 <!-- 	<div class="container" align="center"> -->
-		<h2 class="text-primary">게시글 상세정보</h2>
-		<table class="table table-bordered">
-			<tr>
-				<td>제목</td>
-				<td>${board.subject}</td>
+		
+		<table class="table table-bordered" style="width:75%;" align=center>
+			<tr >
+				<td colspan=2 style="text-align:center"><b>${board.subject}</b></td>
+			</tr>
+			<tr >
+				<td colspan=2 >${board.writer} (${board.email})</td>
 			</tr>
 			<tr>
-				<td>작성자</td>
-				<td>${board.writer}</td>
+				<td><span style="color:grey">작성일:</span> ${board.reg_date} &nbsp&nbsp&nbsp
+				<span style="color:grey">조회: </span>${board.readcount}</td>
 			</tr>
+			<c:if test="${board.attach != null}">
 			<tr>
-				<td>조회수</td>
-				<td>${board.readcount}</td>
+				<td colspan=2><a href="download.env?fname=${board.attach}">${board.attach}</a></td>
 			</tr>
-			<tr>
-				<td>첨부파일</td>
-				<td><a href="download.env?fname=${board.attach}">${board.attach}</a></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${board.email}</td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><pre>${board.content}</pre></td>
+			</c:if>
+			<tr >
+				<td colspan=2 ><pre>${board.content}</pre></td>
 			</tr>
 		</table>
+		
+		<div align=center>
+		
 		<a href="javascript:history.go(-1)" class="btn btn-info">목록</a> <!-- 뒤로 가면 list가 안나온다....ㅜㅜㅜㅜㅜ view 하나를 다시 파야할듯 -->
 		<c:if test="${position=='master'}">
 			<a href="notice_modifyForm.env?id=notice_list&pageNum=${pageNum}&num=${board.num}"
@@ -63,7 +60,7 @@
 		<c:if test="${position=='friend'}">
 			<a href="notice_replyForm.env?id=notice_list&pageNum=${pageNum}&num=${board.num}"
 			class="btn btn-info">답변</a>
-		</c:if>
+		</c:if></div>
 		<p>
 </div> <!-- container end -->
 </div></div>

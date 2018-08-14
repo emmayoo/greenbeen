@@ -68,6 +68,7 @@ $(function(){
  	  if (now != reg_date) {
  		 $button.addClass('disabled');
  		 $('#check').val('작성일과 동일한 날만 제출 가능').attr('disabled','disabled');
+ 		 $('#cancel').hide();
  	  }
  	  
   	  $button.click(function() {
@@ -128,39 +129,28 @@ $(function(){
 			<input type="hidden" name=num value="${board.num }">
 			<input type="hidden" name=point id=point value="0">
 			
-			<h2 class="text-primary">오늘의 퀴즈:</h2>
-			<table class="table table-bordered">
-				<tr>
-					<td>날짜</td>
-					<td>${board.reg_date}</td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td>${board.subject}</td>
-				</tr>
-				<tr>
-					<td>작성자</td>
-					<td>${board.writer}</td>
-				</tr>
-				<tr>
-					<td>조회수</td>
-					<td>${board.readcount}</td>
-				</tr>
-				<tr>
-					<td>첨부파일</td>
-					<td><a href="download.env?fname=${board.attach}">${board.attach}</a></td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td>${board.email}</td>
-				</tr>
-				<tr>
-					<td>문제</td>
-					<td><pre>${board.question}</pre></td>
-				</tr>
-				<tr>
-					<td>보기: ${ board.answer_correct }</td>
-					<td><label><input type="radio" name=choice
+		<table class="table table-bordered" style="width:75%;" align=center>
+			<tr >
+				<td colspan=2 style="text-align:center"><b>${board.subject}</b></td>
+			</tr>
+			<tr >
+				<td colspan=2 >${board.writer} (${board.email})</td>
+			</tr>
+			<tr>
+				<td><span style="color:grey">작성일:</span> ${board.reg_date} &nbsp&nbsp&nbsp
+				<span style="color:grey">조회: </span>${board.readcount}</td>
+			</tr>
+			<c:if test="${board.attach != null}">
+			<tr>
+				<td colspan=2><a href="download.env?fname=${board.attach}">${board.attach}</a></td>
+			</tr>
+			</c:if>
+			<tr>
+				<td colspan=2><pre>${board.question}</pre></td>
+			</tr>
+			<tr>
+					<%-- <td>보기: ${ board.answer_correct }</td> --%>
+					<td colspan=2><label><input type="radio" name=choice
 							value="${ board.answer1 }"> 1. ${ board.answer1 }</label><br />
 						<label><input type="radio" name=choice
 							value="${ board.answer2 }"> 2. ${ board.answer2 }</label><br />
@@ -172,14 +162,14 @@ $(function(){
 							value="${ board.answer5 }"> 5. ${ board.answer5 }</label><br />
 						<input type="hidden" name=answer_correct
 						value="${board.answer_correct }" id=answer_correct></td>
-				</tr>
-				<tr>
-					<td colspan=2><input type="submit" id="check" value="확인">
-						&nbsp; &nbsp; <input type="reset" value="취소"></td>
+			</tr>
+			<tr>
+				<td colspan=2 style="text-align:center"><input type="submit" id="check" value="확인" class="btn btn-outline-info">
+						&nbsp; &nbsp; <input type="reset" value="취소" class="btn btn-outline-info" id="cancel"></td>
 				</tr>
 			</table>
 
-
+			<div align=center>
 			<a href="javascript:history.go(-1)" class="btn btn-info">목록</a>
 			<!-- 뒤로 가면 list가 안나온다....ㅜㅜㅜㅜㅜ view 하나를 다시 파야할듯 -->
 			<c:if test="${position=='master'}">
@@ -194,7 +184,7 @@ $(function(){
 				<a
 					href="know_quiz_replyForm.env?id=know_quiz_list&pageNum=${pageNum}&num=${board.num}"
 					class="btn btn-info">신고하기</a>
-			</c:if>
+			</c:if></div>
 			<p>
 	</div>
 	<!-- container end -->

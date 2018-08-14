@@ -26,7 +26,6 @@
 
 <div class="container"> 
 
-		<h2 class="text-primary">답글</h2>
 		<form action="question_insert.env?id=${id}&num=${board.num}&pageNum=${pageNum}" method="post" name="frm"
 			onsubmit="return chk()" enctype="multipart/form-data">
 			<input type="hidden" name="num" value="${board.num}"> 
@@ -36,45 +35,45 @@
 			<input type="hidden" name="re_step" value="${re_step}"> 
 			<input type="hidden" name="re_level" value="${re_level}"> 
 			<input type="hidden" name="pageNum" value="${pageNum}">
-			<table class="table table-striped">
+		<table class="table table-striped" align="center" style="width:75%;">
+				<tr><td colspan=2><center class="text-primary">답글</center></td></tr>
 				<tr>
-					<td>제목</td>
+					<td style="width:40%; text-align:center">제목</td>
 					<td><input type="text" name="subject" required="required"
-						value="re:${board.subject}"></td>
+						value="re:${board.subject}" style="width:100%;"></td>
 				</tr>
 				<tr>
-					<td>작성자</td>
+					<td style="width:40%; text-align:center">작성자</td>
 					<td>${jb.join_id}
 						<input type="hidden" name="writer" required="required"
 						value="${jb.join_id}"></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
+					<td style="width:40%; text-align:center">이메일</td>
 					<td><input type="text" name="email" required="required"
 						value="${jb.join_email}"></td>
 				</tr>
 				<tr>
-					<td>암호</td>
+					<td style="width:40%; text-align:center">암호</td>
 					<td><input type="password" name="passwd" required="required"></td>
 				</tr>
 				<tr>
-					<td>암호 확인</td>
+					<td style="width:40%; text-align:center">암호 확인</td>
 					<td><input type="password" name="passwd2" required="required"></td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td><pre>
-							<textarea rows="5" cols="30" name="content" required="required">
+					<td style="width:20%; text-align:center">내용</td>
+					<td><textarea rows="5" cols="100" name="content" required="required">
 							</textarea>
-						</pre></td>
+						</td>
 				</tr>
 				<tr>
-					<td>첨부파일</td>
+					<td style="width:40%; text-align:center">첨부파일</td>
 					<td><input type="file" name="attach1" id="attach1">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"></td>
+					<td colspan="2" align="center"><input type="submit" value="확인" class="btn btn-outline-info"></td>
 				</tr>
 				
 			</table>

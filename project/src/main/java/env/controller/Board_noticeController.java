@@ -197,7 +197,7 @@ public class Board_noticeController {
 		model.addAttribute("id",id);
 		model.addAttribute("board", board);
 		model.addAttribute("pageNum", pageNum);
-		return "/board/files/files_modifyForm";
+		return "/board/notice/notice_modifyForm";
 	}
 	
 	@RequestMapping(value="/notice_modify.env", method = RequestMethod.POST)

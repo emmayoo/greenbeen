@@ -25,7 +25,6 @@
 
 <div class="container"> 
 
-		<h2 class="text-primary">질문있어요</h2>
 		<form onsubmit="return chk()" action="question_insert.env" method="post" enctype="multipart/form-data" name="frm">
 			<input type="hidden" name="id" value="${id}"> 
 			<input type="hidden" name="num" value="${num}"> 
@@ -33,37 +32,38 @@
 			<input type="hidden" name="re_step" value="${re_step}"> 
 			<input type="hidden" name="re_level" value="${re_level}"> 
 			<input type="hidden" name="pageNum" value="${pageNum}">
-			<table class="table table-striped" align="center">
+						<table class="table table-striped" align="center" style="width:75%;">
+				<tr><td colspan=2><center class="text-primary">질문있어요</center></td></tr>
 				<tr>
-					<td>제목</td>
-					<td><input type="text" name="subject" required="required"></td>
+					<td style="width:15%; text-align:center">제목</td>
+					<td><input type="text" name="subject" required="required" style="width:100%;"></td>
 				</tr>
 				<tr>
-					<td>작성자</td>
-					<td><input type="text" name="writer" required="required" value="${member.join_id}" readOnly></td>
+					<td style="width:15%; text-align:center">작성자</td>
+					<td><input type="text" name="writer" required="required"></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="email" required="required" value="${member.join_email}"></td>
+					<td style="width:15%; text-align:center">이메일</td>
+					<td><input type="email" name="email" required="required"></td>
 				</tr>
 				<tr>
-					<td>암호</td>
+					<td style="width:15%; text-align:center">암호</td>
 					<td><input type="password" name="passwd" required="required"></td>
 				</tr>
 				<tr>
-					<td>암호 확인</td>
+					<td style="width:15%; text-align:center">암호 확인</td>
 					<td><input type="password" name="passwd2"  required="required"></td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td><textarea rows="5" cols="30" name="content"	required="required"></textarea></td>
+					<td style="width:15%; text-align:center">내용</td>
+					<td><textarea rows="5" cols="100" name="content"	required="required"></textarea></td>
 				</tr>
 				<tr>
-					<td>파일첨부</td>
+					<td style="width:15%; text-align:center">파일첨부</td>
 					<td><input type="file" name="attach1"></td> <!-- multipart로 받을 꺼니까 DTO랑 property명 다르게 하기!!! -->
 				</tr>
 				<tr>
-					<td colspan="2" align="center"><input type="submit" value="확인"></td>
+					<td colspan="2" align="center"><input type="submit" value="확인" class="btn btn-outline-info"></td>
 				</tr>
 			</table>
 		</form>

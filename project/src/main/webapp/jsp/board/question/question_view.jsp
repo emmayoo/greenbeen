@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+<!--  <script src="http://code.jquery.com/jquery-latest.js"></script> -->
 <script>
 $(function(){
 	//question_view (reply)
@@ -63,34 +63,42 @@ $(function(){
 
 			
 	<!-- <div class="container" align="center"> -->
-		<h2 class="text-primary">게시글 상세정보</h2>
-		<table class="table table-bordered">
-			<tr>
-				<td>제목</td>
-				<td>${board.subject}</td>
+		
+		<table class="table table-bordered" style="width:75%;" align=center>
+			<tr >
+				<td colspan=2 style="text-align:center"><b>${board.subject}</b></td>
+			</tr>
+			<tr >
+				<td colspan=2 >${board.writer} (${board.email})</td>
 			</tr>
 			<tr>
-				<td>작성자</td>
-				<td>${board.writer}</td>
+				<td><span style="color:grey">작성일:</span> ${board.reg_date} &nbsp&nbsp&nbsp
+				<span style="color:grey">조회: </span>${board.readcount}</td>
 			</tr>
+			<c:if test="${board.attach != null}">
 			<tr>
-				<td>조회수</td>
-				<td>${board.readcount}</td>
+				<td colspan=2><a href="download.env?fname=${board.attach}">${board.attach}</a></td>
 			</tr>
-			<tr>
-				<td>첨부파일</td>
-				<td><a href="download.env?fname=${board.attach}">${board.attach}</a></td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td>${board.email}</td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><pre>${board.content}</pre></td>
+			</c:if>
+			<tr >
+				<td colspan=2 ><pre>${board.content}</pre></td>
 			</tr>
 		</table>
 		
+		<div align=center>
+		<div id="slist"></div>
+		<form name="frm" id="frm">
+			<input type="hidden" name="replyer" value="${board.writer}">
+			<input type="hidden" name="bno" value="${board.num}">
+			<table style="width:75%; text-align:center">
+			<tr><td ><span style="color:grey">댓글 :</span></td>
+			<td><textarea rows="3" cols="80" name="replytext" ></textarea></td>
+			<td><input type="button" value="확인" id="repInsert" class="btn btn-outline-info"></td>
+			</tr>
+			</table>	
+		</form>
+		<div id="list"></div>
+		<br><br>
 		<a href="javascript:history.go(-1)" class="btn btn-info">목록</a>
 		<c:if test="${board.writer == sessionScope.id ||position == 'master'}">
 			<a href="question_modifyForm.env?id=question_list&pageNum=${pageNum}&num=${board.num}"
@@ -100,15 +108,9 @@ $(function(){
 		</c:if> 
 			<a href="question_replyForm.env?id=question_list&pageNum=${pageNum}&num=${board.num}"
 			class="btn btn-info">답변</a>
-		<p>
-		<div id="slist"></div>
-		<form name="frm" id="frm">
-			<input type="hidden" name="replyer" value="${board.writer}">
-			<input type="hidden" name="bno" value="${board.num}"> 댓글 :
-			<textarea rows="3" cols="50" name="replytext"></textarea>
-			<input type="button" value="확인" id="repInsert">
-		</form>
-		<div id="list"></div>
+		
+		
+		</div>
 </div> <!-- container end -->
 </div></div>
 </div></div> 

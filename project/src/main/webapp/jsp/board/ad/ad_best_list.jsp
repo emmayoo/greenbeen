@@ -24,16 +24,27 @@
 
 
 <div class="container"> 
-	우수기업
-		새 글:${na}	
-		<table class="table table-striped">
+ 					
+		<table style="width:100%">
+		<tr><td >우수기업 새 글:${na}</td>
+			<td style="text-align:right">
+				<c:if test="${position=='master'}">
+	 			<div align=right> 		
+				<a class="btn btn-light ad_best_new">게시글 작성</a>
+				</div>
+				</c:if>
+			</td>
+		</tr>
+		</table>
+		
+		<table class="table table-striped" style="text-align:center">
 			<tr>
-				<td>번호</td>
-				<td>작성자</td>
-				<td>제목</td>
-				<td>첨부파일</td>
-				<td>작성일</td>
-				<td>조회수</td>
+				<td style="width:5%">번호</td>
+				<td style="width:8%">작성자</td>
+				<td style="width:30%">제목</td>
+				<td style="width:7%">첨부파일</td>
+				<td style="width:5%">작성일</td>
+				<td style="width:5%">조회수</td>
 			</tr>
 			<c:if test="${empty list}">
 				<tr>
@@ -72,8 +83,10 @@
 				</c:forEach>
 			</c:if>
 		</table>
+		
 		<form action="ad_best_list.env?id=ad_best_list&pageNum=${pageNum}">
-			<select name="search">
+			<div class=input-group style="margin:auto;">
+			<select class="form-control"name="search" style="width: 150px;" align=center>
 				<option value="subject"
 					<c:if test="${search=='subject'}">selected="selected" </c:if>>제목</option>
 				<option value="content"
@@ -83,40 +96,40 @@
 				<option value="subcon"
 					<c:if test="${search=='subcon'}">selected="selected" </c:if>>제목+내용</option>
 			</select> 
-			<input type="text" name="keyword"> 
-			<input type="submit" value="확인">
+			<input type="text" name="keyword" class="form-control" style="width: 300px;"> 
+			<input type="submit" value="확인" class="btn" style="height: 35px;">		
+			</div>
 		</form>
-		<ul class="pagination">
+		
+		<!-- <ul class="pagination">  -->
+		<div align=center>
+		<ul class="pagination pagination-sm">
 			<c:if test="${not empty keyword}">
 				<c:if test="${pp.startPage > pp.pagePerBlk }">
-					<li><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.startPage - 1}&search=${search}&keyword=${keyword}">[이전]</a></li>
+					<li class="page-item"><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.startPage - 1}&search=${search}&keyword=${keyword}">[이전]</a></li>
 				</c:if>
 				<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
-					<li <c:if test="${pp.currentPage==i}"> class="active" </c:if>>
+					<li <c:if test="${pp.currentPage==i}"> class="active" </c:if> class="page-item">
 					<a href="ad_best_list.env?id=ad_best_list&pageNum=${i}&search=${search}&keyword=${keyword}">[${i}]</a></li>
 				</c:forEach>
 				<c:if test="${pp.endPage < pp.totalPage}">
-					<li><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.endPage + 1}&search=${search}&keyword=${keyword}">[다음]</a></li>
+					<li class="page-item"><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.endPage + 1}&search=${search}&keyword=${keyword}">[다음]</a></li>
 				</c:if>
 			</c:if>
 			<c:if test="${empty keyword}">
 				<c:if test="${pp.startPage > pp.pagePerBlk }">
-					<li><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.startPage - 1}">이전</a></li>
+					<li class="page-item"><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.startPage - 1}">이전</a></li>
 				</c:if>
 				<c:forEach var="i" begin="${pp.startPage}" end="${pp.endPage}">
-					<li <c:if test="${pp.currentPage==i}">class="active"</c:if>><a
-						href="ad_best_list.env?id=ad_best_list&pageNum=${i}">${i}이거다</a></li>
+					<li <c:if test="${pp.currentPage==i}">class="active"</c:if> class="page-item">
+					<a href="ad_best_list.env?id=ad_best_list&pageNum=${i}">${i} </a></li>
 				</c:forEach>
 				<c:if test="${pp.endPage < pp.totalPage}">
-					<li><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.endPage + 1}">다음</a></li>
+					<li class="page-item"><a href="ad_best_list.env?id=ad_best_list&pageNum=${pp.endPage + 1}">다음</a></li>
 				</c:if>
 			</c:if>
-		</ul>
- 		<c:if test="${position=='master'}">
-			<div align="center">
-				<a class="btn btn-info ad_best_new">질문 입력</a>
-			</div>
-		</c:if>
+		</ul></div>
+		
 </div> <!-- container end -->
 </div></div>
 </div></div>

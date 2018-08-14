@@ -18,18 +18,20 @@
 body {
 	position: relative;
 	overflow-x: hidden;
+
 }
 
 body, html {
 	height: 100%;
 }
-
-#wrapper.toggled {
-	padding-left: 220px;
+#wrapper.toggled #hamburger{
+	position:absolute; z-index:10;
+	padding-left: 350px; /* 햄버거 메뉴 옆으로 이동 */
 }
 
 /*열렸을 경우 박스 */
 #sidebar-wrapper {
+	position:absolute;
 	z-index: 1000;
 	left: 200px;
 	width: 0;
@@ -47,15 +49,7 @@ body, html {
 }
 
 #wrapper.toggled #sidebar-wrapper {
-	width: 240px;
-}
-
-#page-content-wrapper {
-	width: 100%;
-	padding-top: 70px;
-	background-color: white;
-	margin-top:0;
-	
+	width: 370px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -97,11 +91,16 @@ body, html {
 	margin-top:100px;
 } 
 
+
 #page-content-wrapper {
+	width: 100%;
+	padding-top: 70px;
+	margin-top:0;
 	transition: margin-left .5s;
 	padding: 16px;
-	background-color: white;
+	
 	height: 170px;
+	
 }
 
 .dropdown-container {
@@ -112,6 +111,8 @@ body, html {
 
 /*메뉴 각각의 색 설정 */
 #summary:hover, #purpose:hover, #procedure:hover, #information:hover { background-color: yellow; }
+#area:hover, #part:hover, #object:hover { background-color: yellow; }
+#question_list:hover,#know_quiz_list:hover,#know_news_list:hover,#ad_best_list:hover, #ad_com_list:hover, #notice_list:hover, #files_list:hover { background-color: yellow; }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
@@ -196,25 +197,40 @@ ul.topmenu_left li {
     outline: none;
     text-decoration: none;
 }
+
+.container>table{
+	margin-top:20px;
+}
+
+.container> .table-bordered, .table-striped{
+	margin-top:40px;
+}
+
 .tab .nav-tabs{
+	
 	list-style-type:none;
-    border-bottom: 5px;
-	float:left;
-	margin:0;
-	position:relative;
-	left:44%;
+    border-bottom: 5px; 
+  	float:left;  
+	margin-top:20px;
+	position:absolute;
+ 	left:41%; 
+ 	
 		
 	/* //transform: translate(-50%, -50%); */
+}  
+
+.tab .nav-tabs ul{
+text-align:center;
 }
-.tab .nav-tabs ul li{
-	display:block;
+.tab .nav-tabs li{
+	display:inline-block;
     /* margin-right: 30px;
      */
-     float:left;
+     /* float:left; */
      margin:0;
      padding:0;
      position:relative;
-     right:44%;
+     /* right:44%; */
 }
 .tab .nav-tabs li a{
     padding: 20px 15px;
@@ -237,7 +253,7 @@ ul.topmenu_left li {
     background: rgba(0,0,0, 0.2);
     position: absolute;
     bottom: 5px;
-    left: 0;
+    left: 0; 
     transform: scale(0);
     transition: all 700ms ease 0s;
 }
@@ -284,7 +300,7 @@ ul.topmenu_left li {
 
 hr {
 	border: 1;
-     width: 75%;
+     width: 100%;
      border-color : #CACACA;
      height: 20px;
 }
@@ -298,11 +314,9 @@ hr {
 	$(document).ready(function() {
 
 		//햄버거 누르면 펼쳐짐
-
 		$('[data-toggle="offcanvas"]').click(function() {
 			$('#wrapper').toggleClass('toggled');
 		});
-
 		var dropdown = document.getElementsByClassName("dropdown-btn");
 		var i;
 
@@ -350,7 +364,6 @@ hr {
 
 </head>
 <body>
-
 	<div id="wrapper">
 		<div class="overlay"></div>
 
@@ -406,13 +419,13 @@ hr {
 				
 				<ul class="topmenu_left"><li>
 				
-					<span style="font-size: 30px; cursor: pointer"
+					<span id="hamburger" style="font-size: 30px; cursor: pointer"
 						data-toggle="offcanvas">&#9776;</span></li>
 				</ul>
 				
 			<!-- 	<ul class="topmenu_mid">
 					<li> -->
-					<div class="topmenu_mid"><img src="img/index용.jpg" id="logo"></div>
+					<div class="topmenu_mid"><img src="img/yjlogo.jpg" id="logo"></div>
 					
 			<!-- 		</li>
 				</ul> -->
@@ -453,5 +466,6 @@ hr {
 			<!-- /#page-content-wrapper -->
 
 		</div>
+
 </body>
 </html>
